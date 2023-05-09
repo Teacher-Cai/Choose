@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">Choose</string>
+    <string name="start">START</string>
+    <string name="cue">CUE</string>
+    <string name="Call_Urgently_On_God">Call Urgently On God</string>
+    <string name="title_activity_bottom_navi">BottomNaviActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="CHOOSE">CHOOSE</string>
+    <string name="INPUT">INPUT</string>
+    <string name="done">done</string>
+    <string name="save">SAVE</string>
+    <string name="file1">file1</string>
+    <string name="file2">file2</string>
+    <string name="file3">file3</string>
+    <string name="cue1">cue1</string>
+    <string name="cue2">cue2</string>
+    <string name="cue3">cue3</string>
+</resources>
