@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Choose</string>
+    <string name="start">START</string>
+    <string name="cue">CUE</string>
+    <string name="Call_Urgently_On_God">Call Urgently On God</string>
+    <string name="title_activity_bottom_navi">BottomNaviActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="CHOOSE">CHOOSE</string>
+    <string name="INPUT">INPUT</string>
+</resources>
