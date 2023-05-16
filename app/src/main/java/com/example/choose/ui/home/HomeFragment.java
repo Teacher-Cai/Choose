@@ -6,7 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -15,7 +14,6 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.choose.R;
 import com.example.choose.WheelView;
-import com.example.choose.databinding.FragmentHomeBinding;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,14 +21,13 @@ import java.util.Random;
 
 public class HomeFragment extends Fragment {
 
-
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         HomeViewModel homeViewModel =
                 new ViewModelProvider(this).get(HomeViewModel.class);
 
         View view = inflater.inflate(R.layout.fragment_home, container, false);
-        final WheelView wheelView = (WheelView) findViewById(R.id.wheelView);
+        final WheelView wheelView = (WheelView) view.findViewById(R.id.wheelView);
         final List<String> lists = new ArrayList<>();
         for (int i = 0; i < 20; i++) {
             lists.add("test:" + i);
@@ -43,11 +40,11 @@ public class HomeFragment extends Fragment {
         }).build();
 
         // START BUTTON
-        Button startButton = findViewById(R.id.start);
+        Button startButton = view.findViewById(R.id.start);
         startButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getApplicationContext(), "CALLING...", Toast.LENGTH_SHORT).show();
+                Toast.makeText(view.getContext(), "CALLING...", Toast.LENGTH_SHORT).show();
                 wheelView.showSpecificalItemSlide(new Random().nextInt(20));
             }
         });
