@@ -12,16 +12,16 @@
         android:layout_height="wrap_content"
         android:background="@drawable/edit_background"
         android:gravity="top"
-        android:hint="please input item with weight, e.g. \nxiaomi,5 \nhuawei,5 \niphone,5"
+        android:hint="please input item with weight, e.g. \nxiaomi|5 \nhuawei|5 \niphone|5"
         android:maxEms="2"
         android:maxLines="10"
         android:minLines="10" />
 
     <Button
-        android:id="@+id/done"
+        android:id="@+id/save"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/done"
+        android:text="@string/save"
         app:layout_constraintTop_toBottomOf="@+id/e_t"
         tools:ignore="MissingConstraints"
         android:layout_marginTop="30dp" />
