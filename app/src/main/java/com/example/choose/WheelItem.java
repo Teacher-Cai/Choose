@@ -21,13 +21,16 @@ public class WheelItem {
     private String text;
     private Paint mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
 
-    public WheelItem(float startY, int width, int height, int fontColor, int fontSize, String text) {
+    public int index;
+
+    public WheelItem(float startY, int width, int height, int fontColor, int fontSize, String text, int index) {
         this.startY = startY;
         this.width = width;
         this.height = height;
         this.fontColor = fontColor;
         this.fontSize = fontSize;
         this.text = text;
+        this.index = index;
         adjust(0);
     }
 

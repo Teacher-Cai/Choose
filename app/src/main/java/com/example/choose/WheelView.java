@@ -185,7 +185,7 @@ public class WheelView extends View {
             if (stringIndex < 0) {
                 stringIndex = lists.size() + stringIndex;
             }
-            wheelItems.add(new WheelItem(startY, width, itemHeight, fontColor, fontSize, lists.get(stringIndex)));
+            wheelItems.add(new WheelItem(startY, width, itemHeight, fontColor, fontSize, lists.get(stringIndex), stringIndex));
         }
     }
 
@@ -365,7 +365,7 @@ public class WheelView extends View {
                 stringIndex = lists.size() + stringIndex;
             }
             stringIndex %= lists.size();
-            wheelItems.add(new WheelItem(startY, width, itemHeight, fontColor, fontSize, lists.get(stringIndex)));
+            wheelItems.add(new WheelItem(startY, width, itemHeight, fontColor, fontSize, lists.get(stringIndex), stringIndex));
         }
         invalidate();
     }
@@ -391,7 +391,7 @@ public class WheelView extends View {
         WheelItem lastItem = wheelItems.remove(wheelItems.size() - 1);
         lastItem.setStartY(wheelItems.get(0).getStartY());
         //得到文本在容器中的索引
-        int index = lists.indexOf(wheelItems.get(0).getText());
+        int index = wheelItems.get(0).index;
         if (index == -1) {
             return;
         }
@@ -401,6 +401,7 @@ public class WheelView extends View {
         }
         //设置文本
         lastItem.setText(lists.get(index));
+        lastItem.index = index;
 
         for (int i = 0; i < wheelItems.size(); i++) {
             WheelItem item = wheelItems.get(i);
@@ -425,7 +426,7 @@ public class WheelView extends View {
             }
             SlideDownOneStepAndDisplay();
             i++;
-            handler.postDelayed(myRunnable, 40);
+            handler.postDelayed(myRunnable, 1000 / (moveSteps - i + 1));
         }
     }
 
