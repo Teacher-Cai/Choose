@@ -19,17 +19,19 @@ import com.example.choose.WheelView;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Random;
+import java.util.stream.Collectors;
 
 public class HomeFragment extends Fragment {
     private int itemsCnt = 20;
+    private final List<String> lists = new ArrayList<>();
+
+    private List<Double> weightLists = new ArrayList<>();
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         final WheelView wheelView = (WheelView) view.findViewById(R.id.wheelView);
-        final List<String> lists = new ArrayList<>();
 
         String str = ReadWriteUtils.load(getActivity());
         if (TextUtils.isEmpty(str)) {
@@ -48,6 +50,7 @@ public class HomeFragment extends Fragment {
                 lists.addAll(Arrays.asList(lines));
             }
         }
+        transformWeight();
 
         wheelView.lists(lists).fontSize(45).showCount(9).selectTip("SELECTED").select(0).listener(new WheelView.OnWheelViewItemSelectListener() {
             @Override
@@ -58,15 +61,44 @@ public class HomeFragment extends Fragment {
 
         // START BUTTON
         Button startButton = view.findViewById(R.id.start);
-        startButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(view.getContext(), "CALLING...", Toast.LENGTH_SHORT).show();
-                wheelView.showSpecificalItemSlide(new Random().nextInt(lists.size()));
-            }
+        startButton.setOnClickListener(view1 -> {
+            Toast.makeText(view1.getContext(), "CALLING...", Toast.LENGTH_SHORT).show();
+            wheelView.showSpecificalItemSlide(getLocationByRandom());  // new Random().nextInt(lists.size())
         });
 
         return view;
+    }
+
+    private int getLocationByRandom() {
+        Double aRandomDouble = Math.random();
+        for (int i = 0; i < weightLists.size(); i++) {
+            if (weightLists.get(i) >= aRandomDouble) {
+                return i;
+            }
+        }
+        return 0;
+    }
+
+    private void transformWeight() {
+        Double lastNum;
+        for (String aItem : lists) {
+            try {
+                String[] lines = aItem.split(",|，");
+                lastNum = Double.valueOf(lines[lines.length - 1]);
+            } catch (Exception e) {
+                lastNum = 1.0d;
+            }
+            if (weightLists.size() == 0) {
+                weightLists.add(lastNum);
+            } else {
+                weightLists.add(lastNum + weightLists.get(weightLists.size() - 1));
+            }
+        }
+
+        // normalized
+        Double sum = weightLists.get(weightLists.size() - 1);
+        weightLists = weightLists.stream().map(i -> i / sum).collect(Collectors.toList());
+        Log.d("weightLists", weightLists.stream().map(i -> String.valueOf(i.toString())).collect(Collectors.joining(",")));
     }
 
 }

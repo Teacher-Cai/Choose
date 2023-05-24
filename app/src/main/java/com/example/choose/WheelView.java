@@ -6,11 +6,13 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.os.Handler;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Created by ccwxf on 2016/3/31.
@@ -275,7 +277,7 @@ public class WheelView extends View {
             //设置起点Y坐标
             item.setStartY(wheelItems.get(0).getStartY() - itemHeight);
             //得到文本在容器中的索引
-            int index = lists.indexOf(wheelItems.get(0).getText());
+            int index = wheelItems.get(0).index;
             if (index == -1) {
                 return;
             }
@@ -285,6 +287,8 @@ public class WheelView extends View {
             }
             //设置文本
             item.setText(lists.get(index));
+            item.index = index;
+
             //添加到最开始
             wheelItems.add(0, item);
             invalidate();
@@ -297,7 +301,7 @@ public class WheelView extends View {
             //设置起点Y坐标
             item.setStartY(wheelItems.get(wheelItems.size() - 1).getStartY() + itemHeight);
             //得到文本在容器中的索引
-            int index = lists.indexOf(wheelItems.get(wheelItems.size() - 1).getText());
+            int index = wheelItems.get(wheelItems.size() - 1).index;
             if (index == -1) {
                 return;
             }
@@ -307,11 +311,15 @@ public class WheelView extends View {
             }
             //设置文本
             item.setText(lists.get(index));
+            item.index = index;
+
             //添加到最后面
             wheelItems.add(item);
             invalidate();
             return;
         }
+        Log.d("show index", wheelItems.stream().map(i -> String.valueOf(i.index)).collect(Collectors.joining(",")));
+
     }
 
     /**
@@ -411,6 +419,7 @@ public class WheelView extends View {
         //添加到最开始
         wheelItems.add(0, lastItem);
         invalidate();
+        Log.d("show index", wheelItems.stream().map(i -> String.valueOf(i.index)).collect(Collectors.joining(",")));
     }
 
     class MyRunnable implements Runnable {
