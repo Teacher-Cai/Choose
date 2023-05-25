@@ -11,4 +11,10 @@
     <string name="INPUT">INPUT</string>
     <string name="done">done</string>
     <string name="save">SAVE</string>
+    <string name="file1">file1</string>
+    <string name="file2">file2</string>
+    <string name="file3">file3</string>
+    <string name="cue1">cue1</string>
+    <string name="cue2">cue2</string>
+    <string name="cue3">cue3</string>
 </resources>

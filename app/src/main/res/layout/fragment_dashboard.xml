@@ -15,14 +15,43 @@
         android:hint="please input item with weight, e.g. \nxiaomi|5 \nhuawei|5 \niphone|5"
         android:maxEms="2"
         android:maxLines="10"
-        android:minLines="10" />
+        android:minLines="10"
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup"
+        tools:ignore="MissingConstraints" />
 
     <Button
         android:id="@+id/save"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
         android:text="@string/save"
         app:layout_constraintTop_toBottomOf="@+id/e_t"
-        tools:ignore="MissingConstraints"
-        android:layout_marginTop="30dp" />
+        tools:ignore="MissingConstraints" />
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        tools:ignore="MissingConstraints">
+
+        <RadioButton
+            android:id="@+id/btnFile1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="@string/cue1" />
+
+        <RadioButton
+            android:id="@+id/btnFile2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/cue2" />
+
+        <RadioButton
+            android:id="@+id/btnFile3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/cue3" />
+    </RadioGroup>
 </androidx.constraintlayout.widget.ConstraintLayout>

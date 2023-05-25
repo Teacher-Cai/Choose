@@ -439,4 +439,9 @@ public class WheelView extends View {
         }
     }
 
+    public void refresh() {
+        requestLayout();
+        invalidate();
+    }
+
 }

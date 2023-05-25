@@ -20,12 +20,12 @@ public class ReadWriteUtils {
      * 从文件中加载
      * @return
      */
-    public static String load(Activity activity) {
+    public static String load(Activity activity, String fileName) {
         FileInputStream fis = null;
         BufferedReader reader = null;
         StringBuilder content = new StringBuilder();
         try {
-            fis = activity.openFileInput("items.txt");
+            fis = activity.openFileInput(fileName + ".txt");
             reader = new BufferedReader(new InputStreamReader(fis));
             String str;
 
@@ -59,12 +59,12 @@ public class ReadWriteUtils {
      * 保存到文件
      * @param str
      */
-    public static void saveFile(String str, Activity activity, Context context) {
+    public static void saveFile(String str, Activity activity, Context context, String fileName) {
         FileOutputStream fos = null;
         BufferedWriter writer = null;
 
         try {
-            fos = activity.openFileOutput("items.txt", Context.MODE_PRIVATE);
+            fos = activity.openFileOutput(fileName+".txt", Context.MODE_PRIVATE);
             writer = new BufferedWriter(new OutputStreamWriter(fos));
             try {
                 str = URLEncoder.encode(str);

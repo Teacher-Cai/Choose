@@ -29,5 +29,38 @@
         android:gravity="center"
         android:text="@string/Call_Urgently_On_God"
         app:layout_constraintTop_toBottomOf="@+id/wheelView"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+    <RadioGroup
+        android:id="@+id/radioGroupH"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@+id/start"
+        tools:ignore="MissingConstraints"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent">
+
+        <RadioButton
+            android:id="@+id/btnFile1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="@string/cue1" />
+
+        <RadioButton
+            android:id="@+id/btnFile2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/cue2" />
+
+        <RadioButton
+            android:id="@+id/btnFile3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/cue3" />
+    </RadioGroup>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
