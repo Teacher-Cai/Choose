@@ -45,9 +45,13 @@ public class HomeFragment extends Fragment {
         } else {
             String[] lines = str.split("\r\n|\r|\n");
             itemsCnt = lines.length;
-            if (itemsCnt < 11) {
+            if (itemsCnt == 0) {
+                for (int i = 0; i < 20; i++) {
+                    lists.add("No cue:" + i);
+                }
+            } else if (itemsCnt < 11) {
                 // extend to enough items, need at least 11 items
-                for (int i = 0; i < 11 / itemsCnt + 1; i++) {
+                for (int i = 0; i < 11 /itemsCnt + 1; i++) {
                     lists.addAll(Arrays.asList(lines));
                 }
             } else {
@@ -88,7 +92,11 @@ public class HomeFragment extends Fragment {
                 } else {
                     String[] lines = str.split("\r\n|\r|\n");
                     itemsCnt = lines.length;
-                    if (itemsCnt < 11) {
+                    if (itemsCnt == 0) {
+                        for (int i = 0; i < 20; i++) {
+                            lists.add("No cue:" + i);
+                        }
+                    } else if (itemsCnt < 11) {
                         // extend to enough items, need at least 11 items
                         for (int i = 0; i < 11 / itemsCnt + 1; i++) {
                             lists.addAll(Arrays.asList(lines));
