@@ -40,7 +40,7 @@ public class HomeFragment extends Fragment {
         String str = ReadWriteUtils.load(getActivity(), currentChosenFileName);
         if (TextUtils.isEmpty(str)) {
             for (int i = 0; i < itemsCnt; i++) {
-                lists.add("test:" + i);
+                lists.add("No cue:" + i);
             }
         } else {
             String[] lines = str.split("\r\n|\r|\n");
@@ -82,8 +82,8 @@ public class HomeFragment extends Fragment {
                 String str = ReadWriteUtils.load(getActivity(), currentChosenFileName);
                 lists.clear();
                 if (TextUtils.isEmpty(str)) {
-                    for (int i = 0; i < itemsCnt; i++) {
-                        lists.add("test:" + i);
+                    for (int i = 0; i < 20; i++) {
+                        lists.add("No cue:" + i);
                     }
                 } else {
                     String[] lines = str.split("\r\n|\r|\n");
