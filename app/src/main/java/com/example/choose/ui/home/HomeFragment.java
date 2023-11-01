@@ -51,7 +51,7 @@ public class HomeFragment extends Fragment {
                 }
             } else if (itemsCnt < 11) {
                 // extend to enough items, need at least 11 items
-                for (int i = 0; i < 11 /itemsCnt + 1; i++) {
+                for (int i = 0; i < 11 / itemsCnt + 1; i++) {
                     lists.addAll(Arrays.asList(lines));
                 }
             } else {
@@ -124,6 +124,7 @@ public class HomeFragment extends Fragment {
         Double aRandomDouble = Math.random();
         for (int i = 0; i < weightLists.size(); i++) {
             if (weightLists.get(i) >= aRandomDouble) {
+                Log.d("selected_idx", "getLocationByRandom: " + i);
                 return i;
             }
         }
@@ -136,7 +137,11 @@ public class HomeFragment extends Fragment {
         for (String aItem : lists) {
             try {
                 String[] lines = aItem.split(",|，");
-                lastNum = Double.valueOf(lines[lines.length - 1]);
+                if (lines.length > 1) { // only two more split, the last split means weight
+                    lastNum = Double.valueOf(lines[lines.length - 1]);
+                } else {
+                    lastNum = 1.0d;
+                }
             } catch (Exception e) {
                 lastNum = 1.0d;
             }
@@ -145,6 +150,7 @@ public class HomeFragment extends Fragment {
             } else {
                 weightLists.add(lastNum + weightLists.get(weightLists.size() - 1));
             }
+            Log.d("pre-weight", weightLists.stream().map(i -> String.valueOf(i.toString())).collect(Collectors.joining(",")));
         }
 
         // normalized
